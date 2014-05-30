@@ -2,6 +2,10 @@ Pry.config.editor = "/usr/bin/vim"
 
 begin
   require 'awesome_print'
-  Pry.config.print = proc {|output, value| output.puts value.ai }
 rescue LoadError
+else
+  AwesomePrint.pry!
+  AwesomePrint.defaults = {
+    indent: -2
+  }
 end

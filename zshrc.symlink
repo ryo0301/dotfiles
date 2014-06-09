@@ -1,0 +1,245 @@
+# users generic .zshrc file for zsh(1)
+
+##-------------------------------------------------------------------##
+## Environment variable configuration                                ##
+##-------------------------------------------------------------------##
+
+
+
+##-------------------------------------------------------------------##
+## Default shell configuration                                       ##
+##-------------------------------------------------------------------##
+
+# set prompt
+autoload colors
+colors
+case ${UID} in
+0)
+  PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
+  PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
+  SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+    PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+  ;;
+*)
+  PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
+  PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
+  SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+    PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+  ;;
+esac
+
+limit coredumpsize 102401
+
+# Changing Directories
+setopt auto_cd
+setopt auto_pushd
+setopt cdable_vars
+setopt pushd_ignore_dups
+
+# Expansion and Globbing
+setopt brace_ccl
+setopt equals
+setopt extended_glob
+setopt magic_equal_subst
+setopt numeric_glob_sort
+
+# Input/Output
+setopt correct
+setopt print_eightbit
+
+# Job Control
+setopt auto_resume
+setopt long_list_jobs
+
+# Prompting
+setopt prompt_subst
+setopt NO_promptcr
+setopt transient_rprompt
+
+# Zle
+setopt NO_beep
+
+
+
+##-------------------------------------------------------------------##
+## Keybind configuration                                             ##
+##-------------------------------------------------------------------##
+
+# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes to end of it)
+bindkey -e
+
+# historical backward/forward search with linehead string binded to ^P/^N
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
+bindkey "\\ep" history-beginning-search-backward-end
+bindkey "\\en" history-beginning-search-forward-end
+
+
+
+##-------------------------------------------------------------------##
+## Command history configuration                                     ##
+##-------------------------------------------------------------------##
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt append_history
+setopt extended_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_no_store
+setopt hist_verify
+setopt share_history
+
+
+
+##-------------------------------------------------------------------##
+## Completion configuration                                          ##
+##-------------------------------------------------------------------##
+
+fpath=(~/.zsh/functions/Completion ${fpath})
+autoload -U compinit
+compinit
+
+setopt always_last_prompt
+setopt auto_list
+setopt auto_menu
+setopt auto_param_keys
+setopt auto_name_dirs
+setopt auto_remove_slash
+setopt NO_list_beep
+setopt list_packed
+setopt list_types
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+
+
+##-------------------------------------------------------------------##
+## zsh editor                                                        ##
+##-------------------------------------------------------------------##
+
+autoload zed
+
+
+
+##-------------------------------------------------------------------##
+## Prediction configuration                                          ##
+##-------------------------------------------------------------------##
+
+#autoload predict-on
+#predict-off
+
+
+
+##-------------------------------------------------------------------##
+## Alias configuration                                               ##
+##-------------------------------------------------------------------##
+
+setopt complete_aliases
+
+alias where="command -v"
+alias j="jobs -l"
+
+case "${OSTYPE}" in
+freebsd*|darwin*)
+  alias ls="ls -G -w"
+  ;;
+linux*)
+  alias ls="ls --color"
+  ;;
+esac
+
+alias lf="ls -F"
+alias ll="ls -l"
+alias lt="ls -lt"
+alias la="ls -la"
+
+alias du="du -h"
+alias df="df -h"
+
+alias su="su -l"
+
+alias free="free -m"
+
+case "${OSTYPE}" in
+darwin*)
+  alias updateports="sudo port selfupdate; sudo port outdated"
+  alias portupgrade="sudo port upgrade installed"
+  ;;
+freebsd*)
+  case ${UID} in
+  0)
+    updateports()
+    {
+      if [ -f /usr/ports/.portsnap.INDEX ]
+      then
+        portsnap fetch update
+      else
+        portsnap fetch extract update
+      fi
+      (cd /usr/ports/; make index)
+      portversion -v -l \<
+    }
+    alias appsupgrade='pkgdb -F && BATCH=YES NO_CHECKSUM=YES portupgrade -a'
+    ;;
+  esac
+  ;;
+esac
+
+
+
+##-------------------------------------------------------------------##
+## terminal configuration                                            ##
+##-------------------------------------------------------------------##
+
+unset LSCOLORS
+case "${TERM}" in
+xterm)
+  export TERM=xterm-color
+  ;;
+kterm)
+  export TERM=kterm-color
+  # set BackSpace control character
+  stty erase
+  ;;
+cons25)
+  unset LANG
+  export LSCOLORS=ExFxCxdxBxegedabagacad
+  export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+  zstyle ':completion:*' list-colors \
+    'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+  ;;
+esac
+
+
+
+##-------------------------------------------------------------------##
+## set terminal title including current directory                    ##
+##-------------------------------------------------------------------##
+
+case "${TERM}" in
+kterm*|xterm*)
+  precmd() {
+    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+  }
+  export LSCOLORS=exfxcxdxbxegedabagacad
+  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+  zstyle ':completion:*' list-colors \
+    'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+  ;;
+esac
+
+
+
+##-------------------------------------------------------------------##
+## load user .zshrc configuration file                               ##
+##-------------------------------------------------------------------##
+
+[ -f ~/.zshrc.mine ] && source ~/.zshrc.mine

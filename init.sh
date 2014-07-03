@@ -4,5 +4,5 @@ root=$(cd $(dirname $0) && pwd)
 
 for src in $(find $root -name '*.symlink'); do
   dest=$HOME/.$(basename ${src%.*})
-  ln -s $src $dest
+  [ -e $dest ] || ln -s $src $dest
 done

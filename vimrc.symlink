@@ -30,6 +30,8 @@ cmap <C-e> <End>
 cmap <C-f> <Right>
 cmap <C-b> <Left>
 
+autocmd QuickFixCmdPost *grep* cwindow
+
 "------------------
 " Vundle
 "------------------

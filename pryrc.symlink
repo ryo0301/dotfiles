@@ -6,6 +6,10 @@ rescue LoadError
 else
   AwesomePrint.pry!
   AwesomePrint.defaults = {
-    indent: -2
+    indent: -2,
+    color: {
+      array: :pale,
+      hash: :pale
+    }
   }
 end

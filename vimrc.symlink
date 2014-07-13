@@ -43,7 +43,7 @@ if has('vim_starting')
 endif
 
 Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree.git'
+Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on
 

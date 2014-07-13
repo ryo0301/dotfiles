@@ -9,10 +9,13 @@ for src in $(find $root -name '*.symlink'); do
 done
 
 
-mkdir -p $HOME/.vim/bundle
+bundle_root=$HOME/.vim/bundle
+vundle_dir=$bundle_root/vundle
 
-if [ ! -d $HOME/bundle/vundle ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/vundle
+mkdir -p $vundle_dir
+
+if [ ! -d $vundle_dir ]; then
+  git clone https://github.com/gmarik/Vundle.vim.git $vundle_dir
 fi
 
 vim +BundleInstall +qall

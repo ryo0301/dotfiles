@@ -10,5 +10,3 @@
   ui = true
 [alias]
   tree = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
-[core]
-	editor = vim

@@ -9,12 +9,9 @@ done
 
 
 bundle_root=$HOME/.vim/bundle
-vundle_dir=$bundle_root/vundle
-
+neobundle_dir=$bundle_root/neobundle.vim
 mkdir -p $bundle_root
 
-if [ ! -d $vundle_dir ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git $vundle_dir
-fi
+[ ! -d $neobundle_dir ] && git clone https://github.com/Shougo/neobundle.vim $neobundle_dir
 
-vim +BundleInstall +qall!
+vim +NeoBundleInstall +qall!

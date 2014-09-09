@@ -36,15 +36,15 @@ autocmd QuickFixCmdPost *grep* cwindow
 " Vundle
 "------------------
 filetype off
-
 if has('vim_starting')
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
+call neobundle#rc(expand('~/.vim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
 
+call neobundle#end()
 filetype plugin indent on
 
 "------------------

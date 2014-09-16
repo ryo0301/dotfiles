@@ -33,7 +33,7 @@ cmap <C-b> <Left>
 autocmd QuickFixCmdPost *grep* cwindow
 
 "------------------
-" Vundle
+" NeoBundle
 "------------------
 filetype off
 if has('vim_starting')

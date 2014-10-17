@@ -8,6 +8,7 @@ set hlsearch
 
 set number
 set title
+set cursorline
 set showcmd
 set laststatus=2
 
@@ -19,6 +20,8 @@ set shiftwidth=2
 set expandtab
 set softtabstop=2
 set smarttab
+
+set background=dark
 
 syntax on
 

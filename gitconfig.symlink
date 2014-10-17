@@ -11,6 +11,6 @@
 [alias]
   tree = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
 [filter "media"]
+	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-	required = true

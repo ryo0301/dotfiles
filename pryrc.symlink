@@ -1,5 +1,8 @@
 Pry.config.editor = "/usr/bin/vim"
 
+Pry.config.history.should_save = false
+Pry.config.history.should_load = false
+
 begin
   require 'awesome_print'
 rescue LoadError

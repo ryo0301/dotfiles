@@ -25,9 +25,6 @@ set background=dark
 
 syntax on
 
-noremap : ;
-noremap ; :
-
 cmap <C-a> <Home>
 cmap <C-e> <End>
 cmap <C-f> <Right>

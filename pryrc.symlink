@@ -21,12 +21,12 @@ begin
   require 'aws-sdk-core'
 rescue LoadError
 else
-  # aws.rb may already have been initialized
+  # Default region may already have been initialized by aws.rb
   Aws.config[:region] ||= 'ap-northeast-1'
 
   Pry::Commands.import(Pry::CommandSet.new {
     block_command 'aws-assume-role' do |*argv|
-      system "~/bin/aws-assume-role #{argv.join ' '}"
+      system "~/bin/saw iam assume-role #{argv.join ' '}"
     end
   })
 end

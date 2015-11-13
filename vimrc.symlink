@@ -42,10 +42,11 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jimsei/winresizer.git' 
 call neobundle#end()
 filetype plugin indent on
 
 "------------------
 " NERDTree
 "------------------
-noremap <C-e> <ESC>:NERDTreeToggle<CR>
+noremap <C-n><C-t> <ESC>:NERDTreeToggle<CR>

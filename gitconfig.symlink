@@ -7,7 +7,7 @@
   interactive = auto
   showbranch = auto
   status = auto
-  ui = true
+  ui = auto
 [alias]
   tree = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
 [filter "media"]

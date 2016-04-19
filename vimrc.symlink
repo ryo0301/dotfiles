@@ -43,6 +43,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jimsei/winresizer.git' 
+NeoBundle 'elzr/vim-json' 
 call neobundle#end()
 filetype plugin indent on
 

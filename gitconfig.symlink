@@ -18,8 +18,6 @@
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
-[user]
-	name = ryo0301
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f

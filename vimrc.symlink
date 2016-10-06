@@ -21,6 +21,7 @@ set expandtab
 set softtabstop=2
 set smarttab
 set breakindent
+set colorcolumn=80
 
 set background=dark
 

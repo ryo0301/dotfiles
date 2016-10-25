@@ -53,3 +53,8 @@ filetype plugin indent on
 " NERDTree
 "------------------
 noremap <C-n><C-t> <ESC>:NERDTreeToggle<CR>
+
+"------------------
+" vim-json
+"------------------
+let g:vim_json_syntax_conceal = 0

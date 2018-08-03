@@ -48,6 +48,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jimsei/winresizer.git' 
 NeoBundle 'elzr/vim-json' 
+NeoBundle 'tomlion/vim-solidity' 
 call neobundle#end()
 filetype plugin indent on
 

@@ -56,6 +56,7 @@ filetype plugin indent on
 " NERDTree
 "------------------
 noremap <C-n><C-t> <ESC>:NERDTreeToggle<CR>
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 "------------------
 " vim-json

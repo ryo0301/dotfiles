@@ -3,13 +3,27 @@ set -gx EDITOR vim
 set -gx PAGER less
 set -gx PATH "$HOME/bin" $PATH
 
+
 # alias
-function ll
-  ls -lGF $argv
+## exa
+function ls
+  exa -F $argv
 end
+function ll
+  ls -l $argv
+end
+function l.
+  ls -la $argv
+end
+function lt
+  ls -T $argv
+end
+
+## tree
 function tree
   command tree -aCF --dirsfirst --noreport $argv
 end
+
 
 # less
 set -gx LESS "-iMR"
@@ -20,6 +34,7 @@ set -gx LESS_TERMCAP_se \e'[0m'          # Ends standout-mode.
 set -gx LESS_TERMCAP_so \e'[00;47;30m'   # Begins standout-mode.
 set -gx LESS_TERMCAP_ue \e'[0m'          # Ends underline.
 set -gx LESS_TERMCAP_us \e'[01;34m'      # Begins underline.
+
 
 # git
 set __fish_git_prompt_showdirtystate 'yes'
@@ -40,6 +55,7 @@ set __fish_git_prompt_color_upstream_behind red
 #set __fish_git_prompt_char_upstream_ahead '>'
 #set __fish_git_prompt_char_upstream_diverged '<>'
 
+
 # fish plugins
 ## fish-bd
 set -gx BD_OPT "insensitive"
@@ -48,6 +64,7 @@ set -gx BD_OPT "insensitive"
 function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
 end
+
 
 # homebrew
 set -gx HOMEBREW_GITHUB_API_TOKEN ""

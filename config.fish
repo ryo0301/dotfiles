@@ -72,6 +72,7 @@ set -gx HOMEBREW_GITHUB_API_TOKEN ""
 # nodebrew
 set -gx PATH "$HOME/.nodebrew/current/bin" $PATH
 set -gx NODE_PATH "$HOME/.nodebrew/current/lib/node_modules"
+echo 'node: '(nodebrew use default)
 
 # direnv
 eval (direnv hook fish)

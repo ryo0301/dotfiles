@@ -69,13 +69,11 @@ end
 # homebrew
 set -gx HOMEBREW_GITHUB_API_TOKEN ""
 
-# nodebrew
-set -gx PATH "$HOME/.nodebrew/current/bin" $PATH
-set -gx NODE_PATH "$HOME/.nodebrew/current/lib/node_modules"
-echo 'node: '(nodebrew use default)
-
 # direnv
 eval (direnv hook fish)
+
+# nodenv
+nodenv init - | source
 
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)

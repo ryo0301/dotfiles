@@ -9,12 +9,15 @@ set -gx PATH "$HOME/bin" $PATH
 function ls
   exa -F $argv
 end
+
 function ll
   ls -l $argv
 end
+
 function l.
   ls -la $argv
 end
+
 function lt
   ls -T $argv
 end
@@ -70,13 +73,13 @@ end
 set -gx HOMEBREW_GITHUB_API_TOKEN ""
 
 # direnv
-eval (direnv hook fish)
+direnv hook fish | source
 
 # nodenv
 nodenv init - | source
 
 # rbenv
-status --is-interactive; and source (rbenv init -|psub)
+rbenv init - | source
 
 # pyenv
 pyenv init - | source

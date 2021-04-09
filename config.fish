@@ -27,6 +27,14 @@ function tree
   command tree -aCF --dirsfirst --noreport $argv
 end
 
+## fisherman
+function fish_user_key_bindings
+  ## plugin-peco
+  bind \cr 'peco_select_history (commandline -b)'
+  ## ghq
+  bind \c] 'cd (ghq root)/(ghq list | peco) && commandline -f repaint'
+end
+
 
 # less
 set -gx LESS "-iMR"
@@ -63,11 +71,6 @@ set __fish_git_prompt_color_upstream_behind red
 ## fish-bd
 set -gx BD_OPT "insensitive"
 
-## plugin-peco
-function fish_user_key_bindings
-  bind \cr 'peco_select_history (commandline -b)'
-end
-
 
 # homebrew
 set -gx HOMEBREW_GITHUB_API_TOKEN ""
@@ -85,8 +88,7 @@ rbenv init - | source
 pyenv init - | source
 
 # Go
-set -gx GOPATH "$HOME/work/go"
-set -gx PATH $PATH "$GOPATH/bin"
+set -gx GOPATH "$HOME"
 
 # Java
 set -gx JAVA_HOME (/usr/libexec/java_home -v 11)
@@ -96,3 +98,4 @@ source "$HOME/.cargo/env"
 
 # AWS
 complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
+

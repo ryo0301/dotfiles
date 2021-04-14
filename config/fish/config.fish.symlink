@@ -73,7 +73,16 @@ set -gx BD_OPT "insensitive"
 
 
 # homebrew
-set -gx HOMEBREW_GITHUB_API_TOKEN ""
+set -gx HOMEBREW_GITHUB_API_TOKEN (security find-generic-password -a $USER -s ghp.homebrew -w)
+
+# Go
+set -gx GOPATH "$HOME"
+
+# Java
+set -gx JAVA_HOME (/usr/libexec/java_home -v 11)
+
+# Rust
+source "$HOME/.cargo/env"
 
 # direnv
 direnv hook fish | source
@@ -87,15 +96,13 @@ rbenv init - | source
 # pyenv
 pyenv init - | source
 
-# Go
-set -gx GOPATH "$HOME"
-
-# Java
-set -gx JAVA_HOME (/usr/libexec/java_home -v 11)
-
-# Rust
-source "$HOME/.cargo/env"
+# goenv
+set -gx GOENV_DISABLE_GOPATH 1
+set -gx GOENV_ROOT "$HOME/.goenv"
+set -gx PATH "$GOENV_ROOT/bin" $PATH
+goenv init - | source
+set -gx PATH "$GOROOT/bin" $PATH
+set -gx PATH $PATH "$GOPATH/bin"
 
 # AWS
 complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
-

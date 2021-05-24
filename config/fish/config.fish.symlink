@@ -94,6 +94,7 @@ nodenv init - | source
 rbenv init - | source
 
 # pyenv
+status is-login; and pyenv init --path | source
 pyenv init - | source
 
 # goenv

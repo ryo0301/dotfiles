@@ -1,7 +1,6 @@
 # alias
 alias ll="ls -lGF"
 alias tree="tree -aCF --dirsfirst --noreport"
-alias paws="aws.rb --region ap-northeast-1"
 
 # key bind
 stty werase undef
@@ -33,13 +32,21 @@ export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
 export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
 export LESS_TERMCAP_us=$'\E[01;34m'      # Begins underline.
 
-# completion
+# bash deprecation warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# homebrew
+if [ -x "/opt/homebrew/bin/brew" ];then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# bash completion
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
   source "$(brew --prefix)/etc/bash_completion"
 fi
 
 # aws
-complete -o default -C "aws_completer" aws
+complete -C aws_completer aws
 
 # saw
 source "$HOME/.saw/lib/completer"

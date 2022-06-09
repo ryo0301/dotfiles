@@ -1,0 +1,78 @@
+# alias
+alias ll="ls -lGF"
+alias tree="tree -aCF --dirsfirst --noreport"
+alias paws="aws.rb --region ap-northeast-1"
+
+# key bind
+stty werase undef
+bind "\C-w":unix-filename-rubout
+#bind "\C-f":forward-word
+#bind "\C-b":backward-word
+
+# global env
+export EDITOR="vim"
+export PAGER="less"
+export PATH="$HOME/bin:$PATH"
+
+# PS1
+GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_SHOWDIRTYSTATE=true 
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_DESCRIBE_STYLE="default"
+PROMPT_COMMAND='__git_ps1 "\[\e[36m\]\W\[\e[0m\]" "\\\$ "'
+
+# less
+export LESS="-iMR"
+export LESS_TERMCAP_mb=$'\E[01;35m'      # Begins blinking.
+export LESS_TERMCAP_md=$'\E[01;35m'      # Begins bold.
+export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
+export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
+export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
+export LESS_TERMCAP_us=$'\E[01;34m'      # Begins underline.
+
+# completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  source "$(brew --prefix)/etc/bash_completion"
+fi
+
+# aws
+complete -o default -C "aws_completer" aws
+
+# saw
+source "$HOME/.saw/lib/completer"
+
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+
+# Go
+export GOPATH="$HOME/work/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# homebrew
+export HOMEBREW_GITHUB_API_TOKEN="$(security find-generic-password -a $USER -s ghp.homebrew -w)"
+
+# nodebrew
+PATH="$HOME/.nodebrew/current/bin:$PATH"
+export NODE_PATH="$HOME/.nodebrew/current/lib/node_modules"
+
+# rbenv
+PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# pyenv
+PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+
+# direnv
+eval "$(direnv hook bash)"
+
+# iTerm2 Shell Integration
+if [ -e "${HOME}/.iterm2_shell_integration.bash" ]; then
+  source "${HOME}/.iterm2_shell_integration.bash"
+fi
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"

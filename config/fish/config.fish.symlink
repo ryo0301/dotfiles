@@ -28,12 +28,21 @@ if status is-interactive
     command tree -aCF --dirsfirst --noreport $argv
   end
 
+  ## ghq+peco
+  function peco_select_repo
+    set -l path (ghq list | peco)
+    if test -n "$path"
+      cd (ghq root)"/$path"
+      commandline -f repaint
+    end
+  end
+
   ## fish
   function fish_user_key_bindings
     ## plugin-peco
     bind \cr 'peco_select_history (commandline -b)'
     ## ghq
-    bind \c] 'cd (ghq root)/(ghq list | peco) && commandline -f repaint'
+    bind \c] 'peco_select_repo'
   end
 
 
@@ -81,9 +90,6 @@ if status is-interactive
   end
   set -gx HOMEBREW_GITHUB_API_TOKEN (security find-generic-password -a $USER -s ghp.homebrew -w)
 
-  # Go
-  set -gx GOPATH "$HOME"
-
   # Java
   set -gx JAVA_HOME (/usr/libexec/java_home -v 11)
 
@@ -104,14 +110,6 @@ if status is-interactive
   # pyenv
   status is-login; and pyenv init --path | source
   pyenv init - | source
-
-  # goenv
-  set -gx GOENV_DISABLE_GOPATH 1
-  set -gx GOENV_ROOT "$HOME/.goenv"
-  set -gx PATH "$GOENV_ROOT/bin" $PATH
-  goenv init - | source
-  set -gx PATH "$GOROOT/bin" $PATH
-  set -gx PATH $PATH "$GOPATH/bin"
 
   # AWS
   complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'

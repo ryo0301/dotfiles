@@ -55,8 +55,7 @@ source "$HOME/.saw/lib/completer"
 export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 
 # Go
-export GOPATH="$HOME/work/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # homebrew
 export HOMEBREW_GITHUB_API_TOKEN="$(security find-generic-password -a $USER -s ghp.homebrew -w)"

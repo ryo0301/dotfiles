@@ -28,7 +28,8 @@ if status is-interactive
     command tree -aCF --dirsfirst --noreport $argv
   end
 
-  ## ghq+peco
+
+  # fish bind
   function peco_select_repo
     set -l path (ghq list | peco)
     if test -n "$path"
@@ -37,7 +38,6 @@ if status is-interactive
     end
   end
 
-  ## fish
   function fish_user_key_bindings
     ## plugin-peco
     bind \cr 'peco_select_history (commandline -b)'
@@ -80,15 +80,17 @@ if status is-interactive
   # fish
   set fish_greeting
 
-  ## fish-bd
+  # fish-bd
   set -gx BD_OPT "insensitive"
-
 
   # homebrew
   if test -x "/opt/homebrew/bin/brew"
     eval (/opt/homebrew/bin/brew shellenv)
   end
   set -gx HOMEBREW_GITHUB_API_TOKEN (security find-generic-password -a $USER -s ghp.homebrew -w)
+
+  # Go
+  set -gx PATH (go env GOPATH)/bin $PATH
 
   # Java
   set -gx JAVA_HOME (/usr/libexec/java_home -v 11)

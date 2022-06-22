@@ -21,7 +21,7 @@ set breakindent
 set colorcolumn=80
 
 set list
-set listchars=tab:»\ ,trail:_,nbsp:%,eol:↲
+set listchars=tab:»\ ,trail:_,nbsp:%
 
 set background=dark
 

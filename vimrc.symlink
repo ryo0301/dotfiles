@@ -27,6 +27,8 @@ set background=dark
 
 syntax on
 
+hi Comment ctermfg=DarkGreen
+
 cmap <C-a> <Home>
 cmap <C-e> <End>
 cmap <C-f> <Right>

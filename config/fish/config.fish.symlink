@@ -2,7 +2,6 @@ if status is-interactive
   # global export
   set -gx EDITOR vim
   set -gx PAGER less
-  set -gx PATH "$HOME/bin" $PATH
 
 
   # alias
@@ -31,10 +30,25 @@ if status is-interactive
 
   # fish bind
   function peco_select_repo
-    set -l path (ghq list | peco)
+    set -l path (ghq list | peco --select-1)
     if test -n "$path"
       cd (ghq root)"/$path"
       commandline -f repaint
+    end
+  end
+
+  function peco_select_go
+    set -l system_prefix (brew --prefix)
+    set -l gover (command ls "$HOME/sdk/" | cat (echo system "($system_prefix/bin/go)" | psub) - | peco --select-1)
+    if test -n "$gover"
+      if ! test (string match -r "[0-9.]+" "$gover")
+        set -f path "$system_prefix/bin/go"
+      else if ! test -x "$HOME/sdk/$gover/bin/go"
+        set -f path "$system_prefix/bin/go"
+      else
+        set -f path "$HOME/sdk/$gover/bin/go"
+      end
+      ln -sf $path "$HOME/bin/go"
     end
   end
 
@@ -115,4 +129,6 @@ if status is-interactive
 
   # AWS
   complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
+
+  set -gx PATH "$HOME/bin" $PATH
 end

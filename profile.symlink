@@ -60,9 +60,9 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 # homebrew
 export HOMEBREW_GITHUB_API_TOKEN="$(security find-generic-password -a $USER -s ghp.homebrew -w)"
 
-# nodebrew
-PATH="$HOME/.nodebrew/current/bin:$PATH"
-export NODE_PATH="$HOME/.nodebrew/current/lib/node_modules"
+# volta
+VOLTA_HOME="$HOME/.volta"
+PATH="$VOLTA_HOME/bin:$PATH"
 
 # rbenv
 PATH="$HOME/.rbenv/bin:$PATH"

@@ -117,8 +117,9 @@ if status is-interactive
   # direnv
   direnv hook fish | source
 
-  # nodenv
-  nodenv init - | source
+  #volta
+  set -gx VOLTA_HOME "$HOME/.volta"
+  set -gx PATH "$VOLTA_HOME/bin" $PATH
 
   # rbenv
   rbenv init - | source

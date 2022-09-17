@@ -10,7 +10,7 @@
 	status = auto
 	ui = auto
 [alias]
-	tree = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
+	tree = log --graph --pretty='format:%C(yellow)%h%C(blue reverse)%d%Creset %s %C(cyan bold)%an%Creset %C(black bold)%ar%Creset'
 [diff]
 	colorMoved = default
 [filter "media"]
@@ -46,8 +46,8 @@
 [ghq]
 	root = ~/src
 [delta]
+	syntax-theme = zenburn
 	navigate = true
 	side-by-side = true
-	line-numbers = true
 [interactive]
 	diffFilter = delta --color-only

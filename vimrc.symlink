@@ -46,7 +46,6 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jimsei/winresizer.git' 
 NeoBundle 'elzr/vim-json' 
 NeoBundle 'pangloss/vim-javascript' 
 NeoBundle 'tomlion/vim-solidity' 

@@ -43,6 +43,8 @@ case "$1" in
     brew install \
       font-hackgen \
       font-ricty-diminished
+    brew install --cask \
+      docker
     ;;
 
   vim)

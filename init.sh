@@ -15,36 +15,7 @@ case "$1" in
     ;;
 
   brew)
-    brew install \
-      awscli \
-      bash-completion \
-      bat \
-      cfn-lint \
-      direnv \
-      exa \
-      ffmpeg \
-      fish \
-      gh \
-      ghq \
-      gibo \
-      git \
-      git-delta \
-      git-secrets \
-      glow \
-      go \
-      jq \
-      peco \
-      pyenv \
-      rbenv \
-      tree \
-      vim \
-      volta
-    brew tap homebrew/cask-fonts
-    brew install \
-      font-hackgen \
-      font-ricty-diminished
-    brew install --cask \
-      docker
+    brew bundle install --file "$root/Brewfile"
     ;;
 
   vim)

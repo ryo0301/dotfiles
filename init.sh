@@ -31,6 +31,7 @@ case "$1" in
     ;;
 
   brew)
+    sudo softwareupdate --install-rosetta
     /opt/homebrew/bin/brew bundle install --file "$root/Brewfile"
     ;;
 

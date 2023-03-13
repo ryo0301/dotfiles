@@ -12,7 +12,8 @@
 [alias]
 	tree = log --graph --pretty='format:%C(yellow)%h%C(blue reverse)%d%Creset %s %C(cyan bold)%an%Creset %C(black bold)%ar%Creset'
 [diff]
-	colorMoved = default
+	algorithm = histogram
+	colorMoved = dimmed-zebra
 [filter "media"]
 	required = true
 	clean = git media clean %f

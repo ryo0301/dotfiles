@@ -52,7 +52,7 @@ complete -C aws_completer aws
 source "$HOME/.saw/lib/completer"
 
 # Java
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 
 # Go
 export PATH="$PATH:$(go env GOPATH)/bin"

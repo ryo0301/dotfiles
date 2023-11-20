@@ -131,5 +131,8 @@ if status is-interactive
   # AWS
   complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
 
+  # OpenAI
+  set -gx OPENAI_API_KEY (security find-generic-password -a $USER -s openai.apikey -w)
+
   set -gx PATH "$HOME/bin" $PATH
 end

@@ -82,3 +82,6 @@ fi
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# OpenAI
+export OPENAI_API_KEY="$(security find-generic-password -a $USER -s openai.apikey -w)"

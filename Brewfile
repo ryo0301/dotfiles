@@ -45,4 +45,5 @@ cask "karabiner-elements"
 cask "postman"
 cask "slack"
 cask "visual-studio-code"
+cask "deepl"
 mas "Microsoft To Do", id: 1274495053

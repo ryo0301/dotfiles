@@ -49,7 +49,6 @@ cask "postman"
 cask "visual-studio-code"
 mas "Microsoft To Do", id: 1274495053
 mas "Slack", id: 803453959
-mas "Toggl Track", id: 1291898086
 vscode "ahebrank.yaml2json"
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "amodio.restore-editors"

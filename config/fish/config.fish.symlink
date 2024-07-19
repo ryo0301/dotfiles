@@ -5,9 +5,9 @@ if status is-interactive
 
 
   # alias
-  ## exa
+  ## eza
   function ls
-    exa -F $argv
+    eza -F $argv
   end
 
   function ll

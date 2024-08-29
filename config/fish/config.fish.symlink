@@ -135,5 +135,5 @@ if status is-interactive
   set -gx OPENAI_API_KEY (security find-generic-password -a $USER -s openai.apikey -w)
 
   # user script
-  fish_add_path $HOME/bin
+  fish_add_path -gP $HOME/bin
 end

@@ -51,9 +51,10 @@ case "$1" in
   fisher)
     /opt/homebrew/bin/fish -l -c "$(curl -sL https://git.io/fisher | source)"
     fisher install jorgebucaran/fisher
-    fisher install oh-my-fish/plugin-peco
     fisher install 0rax/fish-bd
     fisher install jethrokuan/z
+    fisher install PatrickF1/fzf.fish
+    fisher install decors/fish-ghq
     ;;
   *)
     set +x

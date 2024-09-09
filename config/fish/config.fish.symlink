@@ -29,17 +29,9 @@ if status is-interactive
 
 
   # fish bind
-  function peco_select_repo
-    set -l path (ghq list | peco --select-1)
-    if test -n "$path"
-      cd (ghq root)"/$path"
-      commandline -f repaint
-    end
-  end
-
-  function peco_select_go
+  function __go_version_search
     set -l system_prefix (brew --prefix)
-    set -l gover (command ls "$HOME/sdk/" | cat (echo system "($system_prefix/bin/go)" | psub) - | peco --select-1)
+    set -l gover (command ls "$HOME/sdk/" | cat (echo system "($system_prefix/bin/go)" | psub) - | fzf --no-multi)
     if test -n "$gover"
       if ! test (string match -r "[0-9.]+" "$gover")
         set -f path "$system_prefix/bin/go"
@@ -49,14 +41,21 @@ if status is-interactive
         set -f path "$HOME/sdk/$gover/bin/go"
       end
       ln -sf $path "$HOME/bin/go"
+      go version
     end
+    commandline -f repaint
+  end
+
+  function __ghq_repository_search
+    set -l opts '--preview=[ -r {}/README.md ]; and glow {}/README.md'
+    ghq list --full-path | fzf $opts | read select
+    [ -n "$select" ]; and cd "$select"
+    commandline -f repaint
   end
 
   function fish_user_key_bindings
-    ## plugin-peco
-    bind \cr 'peco_select_history (commandline -b)'
-    ## ghq
-    bind \c] 'peco_select_repo'
+    bind \c] '__go_version_search'
+    bind \cg '__ghq_repository_search'
   end
 
 
@@ -69,7 +68,6 @@ if status is-interactive
   set -gx LESS_TERMCAP_so \e'[00;47;30m'   # Begins standout-mode.
   set -gx LESS_TERMCAP_ue \e'[0m'          # Ends underline.
   set -gx LESS_TERMCAP_us \e'[01;34m'      # Begins underline.
-
 
   # git
   set __fish_git_prompt_showdirtystate 'yes'
@@ -89,6 +87,9 @@ if status is-interactive
   #set __fish_git_prompt_char_upstream_behind '<'
   #set __fish_git_prompt_char_upstream_ahead '>'
   #set __fish_git_prompt_char_upstream_diverged '<>'
+
+  # fzf
+  set -gx FZF_DEFAULT_OPTS '--height 50% --border sharp --reverse --cycle --color=border:blue,fg:252,bg:237,hl:4,fg+:231,bg+:24,hl+:1'
 
 
   # fish

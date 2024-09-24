@@ -89,7 +89,7 @@ if status is-interactive
   #set __fish_git_prompt_char_upstream_diverged '<>'
 
   # fzf
-  set -gx FZF_DEFAULT_OPTS '--height 50% --border sharp --reverse --cycle --color=border:blue,fg:252,bg:237,hl:4,fg+:231,bg+:24,hl+:1'
+  set -gx FZF_DEFAULT_OPTS '--height 50% --border sharp --reverse --cycle --no-mouse --color=border:blue,fg:252,bg:237,hl:4,fg+:231,bg+:24,hl+:1'
 
 
   # fish

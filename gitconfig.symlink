@@ -50,5 +50,6 @@
 	syntax-theme = zenburn
 	navigate = true
 	side-by-side = true
+	tabs = 2
 [interactive]
 	diffFilter = delta --color-only

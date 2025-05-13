@@ -1,6 +1,4 @@
 tap "aws/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 brew "awscli"
 brew "bash-completion"
 brew "bat"

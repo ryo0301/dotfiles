@@ -9,6 +9,7 @@ case "$1" in
     defaults write -g com.apple.trackpad.scaling -int 3
     defaults write -g com.apple.mouse.scaling -int 3
     defaults write -g AppleShowAllExtensions -bool true
+    defaults write -g AppleInterfaceStyle -string Dark
     defaults write com.apple.menuextra.clock DateFormat -string 'M\\U6708d\\U65e5(EEE)  H:mm:ss'
     defaults write com.apple.menuextra.clock ShowSeconds -bool true
     defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true

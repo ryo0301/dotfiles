@@ -1,4 +1,9 @@
 if status is-interactive
+  # Amazon Q pre script
+  if test -x ~/.local/bin/q
+    eval (~/.local/bin/q init fish pre)
+  end
+
   # global export
   set -gx EDITOR vim
   set -gx PAGER less
@@ -137,4 +142,9 @@ if status is-interactive
 
   # user script
   fish_add_path -gP $HOME/bin
+
+  # Amazon Q post script
+  if test -x ~/.local/bin/q
+    eval (~/.local/bin/q init fish post)
+  end
 end

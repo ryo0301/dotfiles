@@ -33,7 +33,9 @@ case "$1" in
     ;;
 
   brew)
-    sudo softwareupdate --install-rosetta
+    if [ ! -x /opt/homebrew/bin/brew ]; then
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
     /opt/homebrew/bin/brew bundle install --file "$root/Brewfile"
     if [ -d /opt/homebrew/opt/openjdk/libexec/openjdk.jdk ]; then
       sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk

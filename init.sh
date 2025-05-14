@@ -52,12 +52,12 @@ case "$1" in
     ;;
 
   fisher)
-    /opt/homebrew/bin/fish -l -c "$(curl -sL https://git.io/fisher | source)"
-    fisher install jorgebucaran/fisher
-    fisher install 0rax/fish-bd
-    fisher install jethrokuan/z
-    fisher install PatrickF1/fzf.fish
-    fisher install decors/fish-ghq
+    /opt/homebrew/bin/brew install fisher
+    fish -c "fisher install jorgebucaran/fisher"
+    fish -c "fisher install 0rax/fish-bd"
+    fish -c "fisher install jethrokuan/z"
+    fish -c "fisher install PatrickF1/fzf.fish"
+    fish -c "fisher install decors/fish-ghq"
     ;;
   *)
     set +x

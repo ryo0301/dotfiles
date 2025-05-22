@@ -130,10 +130,6 @@ if status is-interactive
   # rbenv
   rbenv init - | source
 
-  # pyenv
-  status is-login; and pyenv init --path | source
-  pyenv init - | source
-
   # AWS
   complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
 

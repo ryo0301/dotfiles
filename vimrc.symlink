@@ -7,15 +7,17 @@ set hlsearch
 set number
 set title
 set cursorline
+set cursorcolumn
 set showcmd
 set laststatus=2
 
 set autoindent
 set smartindent
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smarttab
 set breakindent
 set colorcolumn=80
@@ -35,6 +37,10 @@ cmap <C-f> <Right>
 cmap <C-b> <Left>
 
 autocmd QuickFixCmdPost *grep* cwindow
+
+autocmd FileType go setlocal noexpandtab shiftwidth=2 softtabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
 
 "------------------
 " NeoBundle

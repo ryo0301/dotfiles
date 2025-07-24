@@ -139,6 +139,9 @@ if status is-interactive
   # user script
   fish_add_path -gP $HOME/bin
 
+  # Amazon Q
+  set -gx AMAZON_Q_SIGV4 "1"
+
   # Amazon Q post script
   if test -x ~/.local/bin/q
     eval (~/.local/bin/q init fish post)

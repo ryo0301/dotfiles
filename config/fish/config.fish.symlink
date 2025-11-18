@@ -1,7 +1,7 @@
 if status is-interactive
-  # Amazon Q pre script
-  if test -x ~/.local/bin/q
-    eval (~/.local/bin/q init fish pre)
+  # Kiro CLI pre script
+  if test -x ~/.local/bin/kiro-cli
+    eval (~/.local/bin/kiro-cli init fish pre)
   end
 
   # global export
@@ -139,11 +139,12 @@ if status is-interactive
   # user script
   fish_add_path -gP $HOME/bin
 
-  # Amazon Q
-  set -gx AMAZON_Q_SIGV4 "1"
+  # Kiro CLI
+  # Temporarily discontinuing use since it doesn’t work properly with the Pro license.
+  #set -gx AMAZON_Q_SIGV4 "1"
 
-  # Amazon Q post script
-  if test -x ~/.local/bin/q
-    eval (~/.local/bin/q init fish post)
+  # Kiro CLI post script
+  if test -x ~/.local/bin/kiro-cli
+    eval (~/.local/bin/kiro-cli init fish post)
   end
 end

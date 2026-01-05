@@ -36,7 +36,7 @@ if status is-interactive
   # fish bind
   function __go_version_search
     set -l system_prefix (brew --prefix)
-    set -l gover (command ls "$HOME/sdk/" | cat (echo system "($system_prefix/bin/go)" | psub) - | fzf --no-multi)
+    set -l gover (command ls "$HOME/sdk/" 2> /dev/null | cat (echo system "($system_prefix/bin/go)" | psub) - | fzf --no-multi)
     if test -n "$gover"
       if ! test (string match -r "[0-9.]+" "$gover")
         set -f path "$system_prefix/bin/go"

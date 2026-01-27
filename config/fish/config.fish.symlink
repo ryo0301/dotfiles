@@ -116,6 +116,7 @@ if status is-interactive
   set -gx JAVA_HOME (/usr/libexec/java_home -v 17)
 
   # Rust
+  set -gx RUST_BACKTRACE full
   if test -r "$HOME/.cargo/env"
     source "$HOME/.cargo/env"
   end

@@ -131,6 +131,9 @@ if status is-interactive
   # rbenv
   rbenv init - | source
 
+  # delta
+  set -gx DELTA_PAGER cat
+
   # AWS
   complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
 

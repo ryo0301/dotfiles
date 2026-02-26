@@ -58,9 +58,38 @@ if status is-interactive
     commandline -f repaint
   end
 
+  function __agent_search
+    ~/.local/bin/kiro-cli agent list 2>&1 \
+      | sed 's/\x1b\[[0-9;]*m//g' \
+      | grep '^[* ] ' \
+      | sed 's/^..//' \
+      | awk '{name=$1; scope=$2; desc=""; for(i=3;i<=NF;i++) desc=desc (i>3?" ":"") $i; if(scope=="(Built-in)") name="\033[38;5;244m"name"\033[0m"; print name"\t"scope"\t"desc}' \
+      | fzf --ansi --delimiter='\t' --with-nth=1 --preview='printf "\033[1mScope\033[0m\n%s\n\n\033[1mDescription\033[0m\n%s\n" {2} {3}' \
+      | sed 's/\x1b\[[0-9;]*m//g' \
+      | cut -f1 \
+      | read -l agent
+    if test -n "$agent"
+      kiro-cli chat --agent $agent
+    end
+    commandline -f repaint
+  end
+
+  function __ctrl_g_menu
+    set -l choice (printf 'agent\nrepo\ngo' | fzf --preview='bash -c "case {} in agent) echo Kiroエージェントを選択して起動;; repo) echo ghqリポジトリに移動;; go) echo Goバージョンを切り替え;; esac"')
+    switch $choice
+      case agent
+        __agent_search
+      case repo
+        __ghq_repository_search
+      case go
+        __go_version_search
+      case '*'
+        commandline -f repaint
+    end
+  end
+
   function fish_user_key_bindings
-    bind \c] '__go_version_search'
-    bind \cg '__ghq_repository_search'
+    bind \cg '__ctrl_g_menu'
   end
 
 

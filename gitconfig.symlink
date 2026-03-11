@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	pager = delta
+	pager = delta --pager less
 [color]
 	branch = auto
 	diff = auto

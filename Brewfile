@@ -70,7 +70,6 @@ mas "Slack", id: 803453959
 vscode "ahebrank.yaml2json"
 vscode "amazonwebservices.amazon-q-vscode"
 vscode "amazonwebservices.aws-toolkit-vscode"
-vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "amodio.restore-editors"
 vscode "biomejs.biome"
 vscode "dbaeumer.vscode-eslint"

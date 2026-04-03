@@ -140,6 +140,10 @@ if status is-interactive
   end
   set -gx HOMEBREW_GITHUB_API_TOKEN (security find-generic-password -a $USER -s ghp.homebrew -w)
 
+  #volta
+  set -gx VOLTA_HOME "$HOME/.volta"
+  set -gx PATH $VOLTA_HOME/bin $PATH
+
   # Go
   fish_add_path (go env GOPATH)/bin
 
@@ -154,10 +158,6 @@ if status is-interactive
 
   # direnv
   direnv hook fish | source
-
-  #volta
-  set -gx VOLTA_HOME "$HOME/.volta"
-  fish_add_path $VOLTA_HOME/bin
 
   # rbenv
   rbenv init - | source

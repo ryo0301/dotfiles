@@ -69,7 +69,7 @@ if status is-interactive
       | cut -f1 \
       | read -l agent
     if test -n "$agent"
-      commandline "kiro-cli chat --agent $agent"
+      commandline "kiro-cli chat --tui --agent $agent"
       commandline -f repaint
       commandline -f execute
     end

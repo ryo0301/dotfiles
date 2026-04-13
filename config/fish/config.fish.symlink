@@ -1,9 +1,4 @@
 if status is-interactive
-  # Kiro CLI pre script
-  if test -x ~/.local/bin/kiro-cli
-    eval (~/.local/bin/kiro-cli init fish pre)
-  end
-
   # global export
   set -gx EDITOR vim
   set -gx PAGER less
@@ -173,13 +168,4 @@ if status is-interactive
 
   # user script
   fish_add_path -gP $HOME/bin
-
-  # Kiro CLI
-  # Temporarily discontinuing use since it doesn’t work properly with the Pro license.
-  #set -gx AMAZON_Q_SIGV4 "1"
-
-  # Kiro CLI post script
-  if test -x ~/.local/bin/kiro-cli
-    eval (~/.local/bin/kiro-cli init fish post)
-  end
 end

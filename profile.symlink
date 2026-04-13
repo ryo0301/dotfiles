@@ -1,5 +1,3 @@
-# Kiro CLI pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.pre.bash"
 # alias
 alias ll="ls -lGF"
 alias tree="tree -aCF --dirsfirst --noreport"
@@ -87,6 +85,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # OpenAI
 export OPENAI_API_KEY="$(security find-generic-password -a $USER -s openai.apikey -w)"
-
-# Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash"

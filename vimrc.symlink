@@ -31,6 +31,9 @@ syntax on
 
 hi Comment ctermfg=DarkGreen
 
+let mapleader = " "
+nnoremap <leader>p :r !pbpaste<CR>
+
 cmap <C-a> <Home>
 cmap <C-e> <End>
 cmap <C-f> <Right>

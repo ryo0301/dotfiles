@@ -138,6 +138,7 @@ if status is-interactive
     eval (/opt/homebrew/bin/brew shellenv)
   end
   set -gx HOMEBREW_GITHUB_API_TOKEN (security find-generic-password -a $USER -s ghp.homebrew -w)
+  set -gx HOMEBREW_VERIFY_ATTESTATIONS 1
 
   #volta
   set -gx VOLTA_HOME "$HOME/.volta"

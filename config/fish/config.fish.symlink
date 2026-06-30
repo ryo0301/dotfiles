@@ -68,7 +68,7 @@ if status is-interactive
       | cut -f1 \
       | read -l agent
     if test -n "$agent"
-      commandline "kiro-cli chat --agent $agent"
+      commandline "dsb-start.sh $agent"
       commandline -f repaint
       commandline -f execute
     end
@@ -170,6 +170,12 @@ if status is-interactive
 
   # OpenAI
   set -gx OPENAI_API_KEY (security find-generic-password -a $USER -s openai.apikey -w)
+
+  # Slack
+  set -gx SLACK_MCP_TOKEN (security find-generic-password -a $USER -s slack.mcp.token -w)
+
+  # Docker MCP Gateway
+  set -gx MCP_GATEWAY_AUTH_TOKEN (security find-generic-password -a $USER -s docker.mcp-gateway.token -w)
 
   # user script
   fish_add_path -gP $HOME/bin

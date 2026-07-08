@@ -1,9 +1,10 @@
-# Font
 font-family = HackGen Console NF
-font-size = 16
+font-size = 18
 
-# Theme
 theme = Black Metal (Burzum)
 
-# Clipboard: 選択時に自動コピー
 copy-on-select = clipboard
+
+bell-features = audio,attention,title
+bell-audio-path = /System/Library/Sounds/Glass.aiff
+bell-audio-volume = 1.0

@@ -70,6 +70,6 @@ cask "kiro-cli"
 cask "logi-options+"
 cask "sbx"
 cask "session-manager-plugin"
+cask "slack"
 cask "visual-studio-code"
 mas "Microsoft To Do", id: 1274495053
-mas "Slack", id: 803453959

@@ -72,4 +72,3 @@ cask "sbx"
 cask "session-manager-plugin"
 cask "slack"
 cask "visual-studio-code"
-mas "Microsoft To Do", id: 1274495053

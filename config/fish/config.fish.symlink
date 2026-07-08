@@ -133,11 +133,20 @@ if status is-interactive
   # fish-bd
   set -gx BD_OPT "insensitive"
 
+  function __set_env_from_keychain
+    set -l key $argv[1]
+    set -l service $argv[2]
+    set -l value (security find-generic-password -a $USER -s $service -w 2>/dev/null)
+    if test $status -eq 0; and test -n "$value"
+      set -gx $key $value
+    end
+  end
+
   # homebrew
   if test -x "/opt/homebrew/bin/brew"
     eval (/opt/homebrew/bin/brew shellenv)
   end
-  set -gx HOMEBREW_GITHUB_API_TOKEN (security find-generic-password -a $USER -s ghp.homebrew -w)
+  __set_env_from_keychain HOMEBREW_GITHUB_API_TOKEN ghp.homebrew
   set -gx HOMEBREW_VERIFY_ATTESTATIONS 1
 
   #volta
@@ -169,13 +178,13 @@ if status is-interactive
   complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); aws_completer; end)'
 
   # OpenAI
-  set -gx OPENAI_API_KEY (security find-generic-password -a $USER -s openai.apikey -w)
+  __set_env_from_keychain OPENAI_API_KEY openai.apikey
 
   # Slack
-  set -gx SLACK_MCP_TOKEN (security find-generic-password -a $USER -s slack.mcp.token -w)
+  __set_env_from_keychain SLACK_MCP_TOKEN slack.mcp.token
 
   # Docker MCP Gateway
-  set -gx MCP_GATEWAY_AUTH_TOKEN (security find-generic-password -a $USER -s docker.mcp-gateway.token -w)
+  __set_env_from_keychain MCP_GATEWAY_AUTH_TOKEN docker.mcp-gateway.token
 
   # user script
   fish_add_path -gP $HOME/bin

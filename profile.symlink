@@ -35,6 +35,16 @@ export LESS_TERMCAP_us=$'\E[01;34m'      # Begins underline.
 # bash deprecation warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+set_env_from_keychain() {
+  local key="$1"
+  local service="$2"
+  local value
+
+  if value="$(security find-generic-password -a "$USER" -s "$service" -w 2>/dev/null)" && [ -n "$value" ]; then
+    export "$key=$value"
+  fi
+}
+
 # homebrew
 if [ -x "/opt/homebrew/bin/brew" ];then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -58,7 +68,7 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # homebrew
-export HOMEBREW_GITHUB_API_TOKEN="$(security find-generic-password -a $USER -s ghp.homebrew -w)"
+set_env_from_keychain HOMEBREW_GITHUB_API_TOKEN ghp.homebrew
 
 # volta
 VOLTA_HOME="$HOME/.volta"
@@ -84,4 +94,4 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # OpenAI
-export OPENAI_API_KEY="$(security find-generic-password -a $USER -s openai.apikey -w)"
+set_env_from_keychain OPENAI_API_KEY openai.apikey

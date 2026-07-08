@@ -1,0 +1,9 @@
+# Font
+font-family = HackGen Console NF
+font-size = 16
+
+# Theme
+theme = Black Metal (Burzum)
+
+# Clipboard: 選択時に自動コピー
+copy-on-select = clipboard

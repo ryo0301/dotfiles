@@ -8,3 +8,5 @@ copy-on-select = clipboard
 bell-features = audio,attention,title
 bell-audio-path = /System/Library/Sounds/Glass.aiff
 bell-audio-volume = 1.0
+
+keybind = cmd+k=clear_screen

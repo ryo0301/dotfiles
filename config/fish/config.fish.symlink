@@ -189,6 +189,11 @@ if status is-interactive
   # Docker MCP Gateway
   __set_env_from_keychain MCP_GATEWAY_AUTH_TOKEN docker.mcp-gateway.token
 
+  # CA bundle
+  __set_env_from_keychain CURL_CA_BUNDLE ca.bundle.path.combined
+  __set_env_from_keychain SSL_CERT_FILE ca.bundle.path.combined
+  __set_env_from_keychain REQUESTS_CA_BUNDLE ca.bundle.path.combined
+
   # user script
   fish_add_path -gP $HOME/bin
 end

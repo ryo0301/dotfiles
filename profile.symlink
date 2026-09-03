@@ -98,3 +98,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # OpenAI
 set_env_from_keychain OPENAI_API_KEY openai.apikey
+
+# CA bundle
+set_env_from_keychain CURL_CA_BUNDLE ca.bundle.path.combined
+set_env_from_keychain SSL_CERT_FILE ca.bundle.path.combined
+set_env_from_keychain REQUESTS_CA_BUNDLE ca.bundle.path.combined

@@ -165,6 +165,9 @@ if status is-interactive
     source "$HOME/.cargo/env"
   end
 
+  # Docker
+  set -gx PATH $HOME/.docker/bin $PATH
+
   # direnv
   direnv hook fish | source
 

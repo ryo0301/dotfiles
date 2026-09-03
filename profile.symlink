@@ -74,6 +74,9 @@ set_env_from_keychain HOMEBREW_GITHUB_API_TOKEN ghp.homebrew
 VOLTA_HOME="$HOME/.volta"
 PATH="$VOLTA_HOME/bin:$PATH"
 
+# Docker
+PATH="$HOME/.docker/bin:$PATH"
+
 # rbenv
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"

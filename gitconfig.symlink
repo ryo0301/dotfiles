@@ -10,7 +10,7 @@
 	status = auto
 	ui = auto
 [alias]
-	tree = log --graph --pretty='format:%C(yellow)%h%C(blue reverse)%d%Creset %s %C(cyan bold)%an%Creset %C(black bold)%ar%Creset'
+	tree = log --graph --date=short --pretty='format:%C(yellow)%h%C(blue reverse)%d%Creset %s %C(cyan bold)%an%Creset %C(bold)%ad (%ar)%Creset'
 [diff]
 	algorithm = histogram
 	colorMoved = dimmed-zebra
